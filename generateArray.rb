@@ -1,0 +1,1 @@
+36.times {print "0, "}

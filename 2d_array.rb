@@ -19,26 +19,42 @@ def hourglassSum(arr)
         # set the current column to 0
         iter[1] = 0
         # set our starting point x by multiplying the current iteration by the max width of the grid
-        x = iter[0]*iterMax[0]
+        x =  iter[0]*grid[0]
         while iter[1] < iterMax[1]
             # addition temporarily stores the integers of each hourglass as it's calculated
             addition = []
+            y = grid[0]
             # search contains a blueprint of an hourglass in relation to the grid
-            search = [x, x+1, x+2, x+grid[0]+1, x+grid[0]*2, x+1+grid[0]*2, x+2+grid[0]*2]
+            search = [x, x+1, x+2, x+y+1, x+y*2, x+1+y*2, x+2+y*2]
             # use the blueprint to gather the relevant numbers into addition and then send the sum to results
             search.each { |i| addition.push(arr[i]) }
             results.push(addition.sum)
+            x += 1
             # iterate through columns
             iter[1] += 1
-            x += 1
+
         end
         iter[0] += 1
     end
-    # return the highest sum of any hourglass
-    return results.max
+    # print the grid
+    # puts "array #{arr[0..5]}"
+    # puts "array #{arr[6..11]}"
+    # puts "array #{arr[12..17]}"
+    # puts "array #{arr[18..23]}"
+    # puts "array #{arr[24..29]}"
+    # puts "array #{arr[30..35]}"
+
+    # # print the results grid
+    # puts "stuff #{results[0..3]}"
+    # puts "stuff #{results[4..7]}"
+    # puts "stuff #{results[8..11]}"
+    # puts "stuff #{results[12..15]}"
+
+    # return highest result
+    returns results.max
 end
     
 
-# Manual testing
-# array = [1,2,3,1,1,1,0,4,0,4,3,2,9,6,7,1,9,3,0,9,8,6,6,0,0,0,0,-2,0,0,0,0,1,2,4,0]
+# # Manual testing
+# array = [1, 2, 3, 4, 5, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2,3,4,5,6,7]
 # hourglassSum(array)
